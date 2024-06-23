@@ -4,22 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bé Ngủ Ngon</title>
-    <link rel="stylesheet" href="./bootstrap.min.css">
     <script src="./jquery-3.7.1.min.js"></script>
-    <script>
-        const $shadow = document.querySelector('.shadow');
-        const $light = document.querySelector('.buld'); 
-        const $filaments = document.querySelector('.filaments');
-
-        $light.addEventListener(
-            'click',
-            () => {
-                $light.classList.toggle('off');
-                $shadow.classList.toggle('off');
-                $filaments.classList.toggle('off');
-            },
-        );
-    </script>
     <style>
         body {
             background-color: #001933;
@@ -33,6 +18,22 @@
             left: calc(50% - (75px/2));
             animation: buld-swing 3s infinite ease-in-out;
         }
+
+       .chu {
+            margin: auto;
+            position: absolute;
+            color: gold;
+            text-shadow: 0px 0px 10px gold,
+            0px 0px 10px gold,
+            0px 0px 10px gold,
+            0px 0px 10px gold;
+            top: 80px;
+            left: calc(50% - (166px/2));
+            opacity: 0.6;
+            display: none;
+           
+        }
+
         .buld {
             z-index: 10;
             display: block;
@@ -97,6 +98,7 @@
              -5px 5px 80px gold,
              -5px -5px 80px gold;
             border: none;
+            transition: all 0.5s ease-out;
         }
         .filaments {
             opacity: 0;
@@ -137,21 +139,26 @@
             position: absolute;
             width: 50px;
             height: 50px;
-            background: #524C11;
+            background: rgba(255, 217, 0, 0.316) ; 
             border-radius: 50%;
             box-shadow: 
-             20px 20px 90px gold,
-             -20px 20px 90px gold,
-             20px -20px 90px gold,
-             -20px -20px 90px gold !important;
+             20px 20px 100px gold,
+             -20px 20px 100px gold,
+             20px -20px 100px gold,
+             -20px -20px 100px gold ;
             top: calc(50% - 25px) ;
             left: calc(50% - 25px);
             animation: shadow-swing 3s infinite ease-in-out;
+            transition: all 0.3s ease-in-out;
         }
 
         .shadow.off {
-            background: #000C19;
+            background: inherit;
             box-shadow: none;
+        }
+
+        .chu.off {
+            display: block;
         }
 
         @keyframes shadow-swing {
@@ -169,13 +176,24 @@
     
 </head>
 <body>
+    
     <div class="container">
+        
         <div class="buld">
-            <div class="filaments"></div>
+            <div class="filaments "></div>
         </div>
     </div>
     <div class="floor">
         <div class="shadow"></div>
+        <div class="chu" style="font-size: 25px;">Bé Iu Ngủ Ngon</div>
     </div>
+    <script>
+        $(".buld").on('click',function () {
+           $('.buld').toggleClass('off');
+           $('.shadow').toggleClass('off');
+           $('.filaments').toggleClass('off');
+           $('.chu').toggleClass('off');
+        })	
+    </script>
 </body>
 </html>
